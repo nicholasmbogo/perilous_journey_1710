@@ -134,4 +134,23 @@ class LinkedListTest < Minitest::Test
     assert_equal "Lawson", list.head.next_node.surname
     assert_equal "The McKinney family, followed by the Lawson family, followed by the Brooks family", list.to_string
   end
+
+  def test_can_find_and_return_one_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Brooks")
+    list.append("Lawson")
+
+    assert_equal "The Brooks family", list.find(1, 1)
+  end
+
+  def test_can_find_and_return_three_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Nick")
+    list.append("Brooks")
+    list.append("Lawson")
+
+    assert_equal "The Nick family, followed by Brooks family, followed by Lawson family", list.find(1, 3)
+  end
 end

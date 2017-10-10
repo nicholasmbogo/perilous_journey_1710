@@ -90,4 +90,23 @@ class LinkedList
     end
     family_list
   end
+
+  def find(start, num_families)
+    current_node = @head
+
+    current_position = 0
+    while current_position < start
+      current_position += 1
+      current_node = current_node.next_node
+    end
+
+    family_list = "The #{current_node.surname} family"
+    (num_families-1).times do
+      current_node = current_node.next_node
+
+      family_list += ", followed by #{current_node.surname} family"
+
+  end
+  family_list
+end
 end
