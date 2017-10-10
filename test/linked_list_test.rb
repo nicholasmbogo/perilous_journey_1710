@@ -198,4 +198,16 @@ class LinkedListTest < Minitest::Test
     assert_instance_of Node, popped
     assert_equal "Lawson", popped.surname
   end
+
+  def test_can_pops_last_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Nick")
+    list.append("Brooks")
+    popped = list.pop
+    assert_equal 2, list.count
+    assert_instance_of Node, popped
+    assert_equal "Brooks", popped.surname
+    assert_equal "The McKinney family, followed by the Nick family", list.to_string
+  end
 end
