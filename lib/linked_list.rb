@@ -109,4 +109,37 @@ class LinkedList
   end
   family_list
 end
+
+  def include?(surname)
+    current_node = @head
+
+    while current_node.next_node
+    if current_node.surname == surname
+      return true
+
+    else
+    current_node = current_node.next_node
+    end
+  end
+
+    if current_node.next_node == surname
+      true
+
+    else
+      false
+    end
+  end
+
+  def pop
+    current_node = @head
+    list_length = count
+    (list_length -2).times do
+      current_node = current_node.next_node
+  end
+
+    last_node = current_node.next_node
+    current_node.next_node = nil
+    puts "The #{last_node.surname} has died of dysentery"
+    last_node
+  end
 end

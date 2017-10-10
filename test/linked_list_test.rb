@@ -144,6 +144,18 @@ class LinkedListTest < Minitest::Test
     assert_equal "The Brooks family", list.find(1, 1)
   end
 
+  def test_can_find_and_return_two_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Brooks")
+    list.append("Lawson")
+    list.append("Lawson")
+
+
+    assert_equal "The Lawson family", list.find(2, 1)
+  end
+
+
   def test_can_find_and_return_three_family
     list = LinkedList.new
     list.append("McKinney")
@@ -152,5 +164,38 @@ class LinkedListTest < Minitest::Test
     list.append("Lawson")
 
     assert_equal "The Nick family, followed by Brooks family, followed by Lawson family", list.find(1, 3)
+  end
+
+  def test_can_return_true_when_list_include_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Nick")
+    list.append("Brooks")
+    list.append("Lawson")
+
+    assert_equal true, list.include?("Brooks")
+  end
+
+  def test_can_return_false_when_list_include_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Nick")
+    list.append("Brooks")
+    list.append("Lawson")
+
+    assert_equal false, list.include?("Chapman")
+  end
+
+  def test_can_pops_last_family
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Nick")
+    list.append("Brooks")
+    list.append("Lawson")
+    popped = list.pop
+
+    assert_equal 3, list.count
+    assert_instance_of Node, popped
+    assert_equal "Lawson", popped.surname
   end
 end
