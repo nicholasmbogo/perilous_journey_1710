@@ -39,4 +39,12 @@ class WagonTest < Minitest::Test
 
     assert_instance_of Node, node1
   end
+
+  def test_wagon_has_count
+    wt = Wagon.new
+    node = wt.append("Burke")
+    node1 = wt.append("West")
+
+    assert_equal 2, wt.count
+  end    
 end

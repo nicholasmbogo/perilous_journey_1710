@@ -9,4 +9,8 @@ class Wagon
   def append(surname)
     @list.append(surname)
   end
+
+  def count
+    @list.count
+  end
 end
