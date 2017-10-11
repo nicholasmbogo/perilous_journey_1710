@@ -6,8 +6,8 @@ class Wagon
     @list = LinkedList.new
   end
 
-  def append(surname)
-    @list.append(surname)
+  def append(surname, supplies)
+    @list.append(surname, supplies)
   end
 
   def count

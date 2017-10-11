@@ -27,24 +27,31 @@ class WagonTest < Minitest::Test
 
   def test_can_append_a_wagon
     wt = Wagon.new
-    node = wt.append("Burke")
+    node = wt.append("Burke", {"pounds of food" => 200})
 
     assert_instance_of Node, node
   end
 
   def test_can_append_a_second_wagon
     wt = Wagon.new
-    node = wt.append("Burke")
-    node1 = wt.append("West")
+    node = wt.append("Burke", {"pounds of food" => 200})
+    node1 = wt.append("West", {"pounds of food" => 200})
 
     assert_instance_of Node, node1
   end
 
   def test_wagon_has_count
     wt = Wagon.new
-    node = wt.append("Burke")
-    node1 = wt.append("West")
+    node = wt.append("Burke",{"pounds of food" => 200})
+    node1 = wt.append("West", {"pounds of food" => 200})
 
     assert_equal 2, wt.count
-  end    
+  end
+
+  # def test_can_have_supplies_on_wagon
+  #   wt = Wagon.new
+  #   node = wt.appendwt.append("Burke", {"pounds of food" => 200})
+  #   node1 = wt.append("West")
+  #   assert_instance_of Node, node1
+  # end
 end

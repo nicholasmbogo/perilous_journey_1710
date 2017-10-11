@@ -31,22 +31,22 @@ class LinkedList
     # return current_node
   end
 
-  def append(surname)
+  def append(surname, supplies)
     if @head.nil?
-      @head = Node.new(surname)
+      @head = Node.new(surname, supplies)
 
      else
-       last_node.next_node = Node.new(surname)
+       last_node.next_node = Node.new(surname, supplies)
      end
   end
 
-  def prepend(surname)
+  def prepend(surname, supplies)
     last_head = @head
-    @head = Node.new(surname)
+    @head = Node.new(surname, supplies)
     @head.next_node = last_head
   end
 
-  def insert(position, surname)
+  def insert(position, surname, supplies)
     current_node = @head
 
     current_position = 0
@@ -57,7 +57,7 @@ class LinkedList
 
     previous_node = current_node
     next_in_list = current_node.next_node
-    new_node = Node.new(surname)
+    new_node = Node.new(surname, supplies)
     previous_node.next_node = new_node
     new_node.next_node = next_in_list
   end

@@ -21,7 +21,7 @@ class LinkedListTest < Minitest::Test
 
   def test_can_append_first_node
     list = LinkedList.new
-    family = list.append("West")
+    family = list.append("West", {"pounds of food" => 200})
 
     assert_equal "West", family.surname
     assert_nil list.head.next_node
@@ -35,22 +35,22 @@ class LinkedListTest < Minitest::Test
 
   def test_linked_list_count_is_one
     list = LinkedList.new
-    list.append("West")
+    list.append("West", {"pounds of food" => 200})
 
     assert_equal 1, list.count
   end
 
   def test_to_string_returns_family
     list = LinkedList.new
-    list.append("West")
+    list.append("West", {"pounds of food" => 200})
 
     assert_equal "The West family", list.to_string
   end
 
   def test_list_can_add_a_second_family
     list = LinkedList.new
-    list.append("Rhodes")
-    second_family = list.append("Hardy")
+    list.append("Rhodes", {"pounds of food" => 200})
+    second_family = list.append("Hardy", {"pounds of food" => 200})
 
     assert_equal "Hardy", second_family.surname
     assert_equal second_family, list.head.next_node
@@ -58,9 +58,9 @@ class LinkedListTest < Minitest::Test
 
   def test_list_can_add_a_third_family
     list = LinkedList.new
-    list.append("Rhodes")
-    second_family = list.append("Hardy")
-    third_family = list.append("Nick")
+    list.append("Rhodes", {"pounds of food" => 200})
+    second_family = list.append("Hardy", {"pounds of food" => 200})
+    third_family = list.append("Nick", {"pounds of food" => 200})
 
     assert_equal "Nick", third_family.surname
     assert_equal third_family,     list.head.next_node.next_node
@@ -68,26 +68,26 @@ class LinkedListTest < Minitest::Test
 
   def test_linked_list_count_is_two
     list = LinkedList.new
-    list.append("West")
-    list.append("Nick")
+    list.append("West", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
 
     assert_equal 2, list.count
   end
 
   def test_to_string_returns_multiple_families
     list = LinkedList.new
-    list.append("West")
-    list.append("Nick")
+    list.append("West", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
 
     assert_equal "The West family, followed by the Nick family", list.to_string
   end
 
   def test_can_add_a_fourth_family
     list = LinkedList.new
-    list.append("West")
-    second_family = list.append("Rhodes")
-    third_family = list.append("Nick")
-    fourth_family = list.append("Brooks")
+    list.append("West", {"pounds of food" => 200})
+    second_family = list.append("Rhodes", {"pounds of food" => 200})
+    third_family = list.append("Nick", {"pounds of food" => 200})
+    fourth_family = list.append("Brooks", {"pounds of food" => 200})
 
     assert_equal "Brooks", fourth_family.surname
     assert_equal fourth_family, list.head.next_node.next_node.next_node
@@ -95,20 +95,20 @@ class LinkedListTest < Minitest::Test
 
   def test_can_prepend_a_node_to_begging_of_list
     list = LinkedList.new
-    list.append("Nick")
-    list.append("Brooks")
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
 
     assert_equal "The Nick family, followed by the Brooks family", list.to_string
-    list.prepend("McKinney")
+    list.prepend("McKinney", {"pounds of food" => 200})
     assert_equal "McKinney", list.head.surname
     assert_equal "The McKinney family, followed by the Nick family, followed by the Brooks family", list.to_string
   end
 
   def test_linked_list_count_is_three
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Nick")
-    list.append("Brooks")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
 
     assert_instance_of Node, list.head.next_node.next_node
     assert_equal 3, list.count
@@ -127,9 +127,9 @@ class LinkedListTest < Minitest::Test
   # end
   def test_can_insert_a_node_into_position_on_list
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Brooks")
-    list.insert(1, "Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
+    list.insert(1, "Lawson", {"pounds of food" => 200})
 
     assert_equal "Lawson", list.head.next_node.surname
     assert_equal "The McKinney family, followed by the Lawson family, followed by the Brooks family", list.to_string
@@ -137,19 +137,19 @@ class LinkedListTest < Minitest::Test
 
   def test_can_find_and_return_one_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Brooks")
-    list.append("Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
 
     assert_equal "The Brooks family", list.find(1, 1)
   end
 
   def test_can_find_and_return_two_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Brooks")
-    list.append("Lawson")
-    list.append("Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
 
 
     assert_equal "The Lawson family", list.find(2, 1)
@@ -158,40 +158,40 @@ class LinkedListTest < Minitest::Test
 
   def test_can_find_and_return_three_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Nick")
-    list.append("Brooks")
-    list.append("Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
 
     assert_equal "The Nick family, followed by Brooks family, followed by Lawson family", list.find(1, 3)
   end
 
   def test_can_return_true_when_list_include_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Nick")
-    list.append("Brooks")
-    list.append("Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
 
     assert_equal true, list.include?("Brooks")
   end
 
   def test_can_return_false_when_list_include_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Nick")
-    list.append("Brooks")
-    list.append("Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks",{"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
 
     assert_equal false, list.include?("Chapman")
   end
 
   def test_can_pops_last_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Nick")
-    list.append("Brooks")
-    list.append("Lawson")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
+    list.append("Lawson", {"pounds of food" => 200})
     popped = list.pop
 
     assert_equal 3, list.count
@@ -201,9 +201,9 @@ class LinkedListTest < Minitest::Test
 
   def test_can_pops_last_family
     list = LinkedList.new
-    list.append("McKinney")
-    list.append("Nick")
-    list.append("Brooks")
+    list.append("McKinney", {"pounds of food" => 200})
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
     popped = list.pop
     assert_equal 2, list.count
     assert_instance_of Node, popped
