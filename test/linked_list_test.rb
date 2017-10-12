@@ -114,17 +114,15 @@ class LinkedListTest < Minitest::Test
     assert_equal 3, list.count
   end
 
+  def test_last_node_returns_the_last_node
+    list = LinkedList.new
+    list.append("Nick", {"pounds of food" => 200})
+    list.append("Brooks", {"pounds of food" => 200})
 
-  # def test_last_node_returns_the_last_node
-  #   list = LinkedList.new
-  #   list.append("Nick")
-  #   list.append("Brooks")
-  #
-  #   #assert_equal "The Nick family, followed by the Brooks family", list.to_string
-  #   #list.prepend("McKinney")
-  #   #binding.pry
-  #   assert_equal "Brooks", list.last_node.surname
-  # end
+    assert_equal "Brooks", list.last_node.surname
+    assert_nil list.last_node.next_node
+  end
+
   def test_can_insert_a_node_into_position_on_list
     list = LinkedList.new
     list.append("McKinney", {"pounds of food" => 200})

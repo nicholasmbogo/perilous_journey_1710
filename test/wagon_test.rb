@@ -64,5 +64,4 @@ class WagonTest < Minitest::Test
     assert_equal ({"pounds of food" => 800}), wt.supplies
     assert_equal 800, wt.supplies["pounds of food"]
   end
-
 end
