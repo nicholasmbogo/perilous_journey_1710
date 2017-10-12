@@ -48,10 +48,21 @@ class WagonTest < Minitest::Test
     assert_equal 2, wt.count
   end
 
-  # def test_can_have_supplies_on_wagon
-  #   wt = Wagon.new
-  #   node = wt.appendwt.append("Burke", {"pounds of food" => 200})
-  #   node1 = wt.append("West")
-  #   assert_instance_of Node, node1
-  # end
+  def test_can_have_supplies_on_wagon
+    wt = Wagon.new
+    node = wt.append("Burke", {"spare wagon tongues" => 3})
+    node1 = wt.append("West", {"pounds of food" => 500})
+
+    assert_equal ({"spare wagon tongues" => 3, "pounds of food" => 500}), wt.supplies
+  end
+
+  def test_returns_aggregate_supplies
+    wt = Wagon.new
+    node = wt.append("Burke", {"pounds of food" => 300})
+    node1 = wt.append("West", {"pounds of food" => 500})
+
+    assert_equal ({"pounds of food" => 800}), wt.supplies
+    assert_equal 800, wt.supplies["pounds of food"]
+  end
+
 end
